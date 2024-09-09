@@ -1,5 +1,5 @@
 import type { LoaderFunction, MetaFunction } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import { Form, Link, redirect, useLoaderData } from '@remix-run/react';
 import { useState } from 'react';
 
 export const meta: MetaFunction = () => {
@@ -16,6 +16,10 @@ export const loader: LoaderFunction = async () => {
   return {
     serverSideData,
   };
+};
+
+export const action = async () => {
+  return redirect('/');
 };
 
 export default function MoviesRoute() {
@@ -65,6 +69,22 @@ export default function MoviesRoute() {
       >
         Make a runtime request
       </button>
+      <div className="flex gap-3 items-center">
+        <Link
+          to="/"
+          className="text-blue-700 underline visited:text-purple-900"
+        >
+          Go to home
+        </Link>
+        <Form method="post">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Go to home
+          </button>
+        </Form>
+      </div>
     </div>
   );
 }
