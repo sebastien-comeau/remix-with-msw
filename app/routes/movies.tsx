@@ -45,19 +45,24 @@ export default function MoviesRoute() {
   };
 
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+    <div className="font-sans p-4 space-y-4">
+      <h1 className="text-3xl">Movies</h1>
       <p id="server-side-greeting">Hello, {serverSideData.firstName}!</p>
       {favoriteMovies?.data ? (
         <div>
           <h2>My favorite movies ({favoriteMovies.data.movies.length})</h2>
-          <ul id="movies-list">
+          <ul className="list-disc mt-4 pl-6 space-y-2" id="movies-list">
             {favoriteMovies.data.movies.map((movie) => (
               <li key={movie.id}>{movie.title}</li>
             ))}
           </ul>
         </div>
       ) : null}
-      <button id="fetch-movies-button" onClick={handleClick}>
+      <button
+        id="fetch-movies-button"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={handleClick}
+      >
         Make a runtime request
       </button>
     </div>
